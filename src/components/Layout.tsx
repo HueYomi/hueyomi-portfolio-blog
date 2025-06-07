@@ -1,9 +1,5 @@
 import { Box, Container, Flex, Heading, Link, HStack, Text } from '@chakra-ui/react'
-import { ReactNode } from 'react'
-
-interface LayoutProps {
-  children: ReactNode
-}
+import { LayoutProps } from '@/types'
 
 export default function Layout({ children }: LayoutProps) {
   return (
