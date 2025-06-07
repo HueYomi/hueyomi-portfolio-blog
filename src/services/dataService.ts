@@ -118,7 +118,7 @@ export class DataService {
       post.title.toLowerCase().includes(searchTerm) ||
       post.summary.toLowerCase().includes(searchTerm) ||
       post.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
-      post.category.toLowerCase().includes(searchTerm)
+      (post.category && post.category.toLowerCase().includes(searchTerm))
     );
 
     return {
@@ -139,7 +139,7 @@ export class DataService {
     }
 
     const filteredPosts = allPosts.posts.filter(post => 
-      post.category.toLowerCase() === category.toLowerCase()
+      post.category && post.category.toLowerCase() === category.toLowerCase()
     );
 
     return {
@@ -148,6 +148,8 @@ export class DataService {
       total: filteredPosts.length
     };
   }
+
+
 
   /**
    * Filter blog posts by tag

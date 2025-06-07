@@ -99,6 +99,8 @@ export function useSearchBlogPosts(query: string) {
   );
 }
 
+
+
 /**
  * Hook for fetching blog posts by category
  */

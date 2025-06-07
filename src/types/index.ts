@@ -12,7 +12,7 @@ export interface Profile {
   linkedin: string;
   github: string;
   profileImage: string;
-  typewriterTexts: string[];
+  typewriterTexts?: string[]; // Optional field for typewriter effect
   updated_at: string;
 }
 
@@ -29,7 +29,7 @@ export interface BlogPost {
   published: boolean;
   featured_image: string;
   read_time: string;
-  category: string;
+  category?: string; // Optional category for organization
   seo: {
     meta_title: string;
     meta_description: string;
@@ -48,14 +48,14 @@ export interface BlogPostSummary {
   published: boolean;
   featured_image: string;
   read_time: string;
-  category: string;
+  category?: string; // Optional category for organization
 }
 
 export interface BlogPostList {
   posts: BlogPostSummary[];
   total: number;
-  categories: string[];
-  tags: string[];
+  categories?: string[]; // Optional list of available categories
+  tags?: string[]; // Optional list of available tags
   updated_at: string;
 }
 
@@ -87,7 +87,7 @@ export interface Education {
   end_date: string;
   gpa: string;
   honors: string[];
-  relevant_coursework: string[];
+  relevant_coursework?: string[]; // Optional list of relevant courses
 }
 
 export interface SkillItem {
@@ -127,7 +127,7 @@ export interface Certificate {
   description: string;
   certificate_image: string;
   badge_image: string;
-  skills: string[];
+  skills?: string[]; // Optional list of skills gained from this certificate
 }
 
 export interface CertificateList {
