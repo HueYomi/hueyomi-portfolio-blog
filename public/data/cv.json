@@ -1,0 +1,110 @@
+{
+  "personal_info": {
+    "name": "Hue Nguyen Thi",
+    "title": "Manual Tester",
+    "email": "hue.nguyenthi@example.com",
+    "phone": "+81-xxx-xxxx-xxxx",
+    "location": "Tokyo, Japan",
+    "summary": "Motivated and detail-oriented fresher manual tester with strong analytical skills and passion for software quality assurance. Recently completed comprehensive training in software testing methodologies and eager to apply knowledge in real-world projects."
+  },
+  "work_experience": [
+    {
+      "company": "QA Training Institute",
+      "position": "Manual Testing Trainee",
+      "start_date": "2023-09-01",
+      "end_date": "2023-12-31",
+      "current": false,
+      "description": "Completed intensive 4-month manual testing training program covering software testing fundamentals, test case design, and defect management.",
+      "technologies": ["JIRA", "TestRail", "Postman", "SQL", "Excel"],
+      "achievements": [
+        "Successfully completed 100+ hours of hands-on testing practice",
+        "Designed and executed 200+ test cases for various applications",
+        "Identified and reported 50+ bugs with detailed documentation",
+        "Achieved 95% score in final assessment"
+      ]
+    },
+    {
+      "company": "Personal Projects",
+      "position": "Self-Learning & Practice",
+      "start_date": "2023-01-01",
+      "end_date": "2023-08-31",
+      "current": false,
+      "description": "Self-directed learning of software testing concepts and practical application through testing various web applications and mobile apps.",
+      "technologies": ["Manual Testing", "Bug Reporting", "Test Documentation"],
+      "achievements": [
+        "Tested 10+ web applications and documented findings",
+        "Created comprehensive test plans for e-commerce websites",
+        "Practiced exploratory testing techniques",
+        "Built personal testing portfolio with documented test cases"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Tokyo University of Technology",
+      "degree": "Bachelor of Information Technology",
+      "start_date": "2019-04-01",
+      "end_date": "2023-03-31",
+      "gpa": "3.6/4.0",
+      "honors": ["Dean's List"],
+      "relevant_coursework": [
+        "Software Engineering",
+        "Database Systems",
+        "Software Quality Assurance",
+        "System Analysis and Design",
+        "Computer Networks",
+        "Web Technologies"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Testing Fundamentals",
+      "items": [
+        {"name": "Manual Testing", "level": 85},
+        {"name": "Test Case Design", "level": 80},
+        {"name": "Test Planning", "level": 75},
+        {"name": "Bug Reporting", "level": 85},
+        {"name": "Exploratory Testing", "level": 80},
+        {"name": "Regression Testing", "level": 75}
+      ]
+    },
+    {
+      "category": "Testing Tools",
+      "items": [
+        {"name": "JIRA", "level": 80},
+        {"name": "TestRail", "level": 75},
+        {"name": "Postman", "level": 70},
+        {"name": "Excel/Google Sheets", "level": 85},
+        {"name": "Browser DevTools", "level": 75}
+      ]
+    },
+    {
+      "category": "Technical Skills",
+      "items": [
+        {"name": "SQL", "level": 70},
+        {"name": "HTML/CSS", "level": 75},
+        {"name": "API Testing", "level": 65},
+        {"name": "Database Testing", "level": 60},
+        {"name": "Cross-browser Testing", "level": 80}
+      ]
+    },
+    {
+      "category": "Soft Skills",
+      "items": [
+        {"name": "Attention to Detail", "level": 90},
+        {"name": "Analytical Thinking", "level": 85},
+        {"name": "Communication", "level": 80},
+        {"name": "Documentation", "level": 85},
+        {"name": "Problem Solving", "level": 80}
+      ]
+    }
+  ],
+  "languages": [
+    {"language": "English", "level": "Fluent"},
+    {"language": "Japanese", "level": "Conversational"},
+    {"language": "Vietnamese", "level": "Native"}
+  ],
+  "download_url": "/assets/cv/resume.pdf",
+  "updated_at": "2024-01-15T10:00:00Z"
+} 

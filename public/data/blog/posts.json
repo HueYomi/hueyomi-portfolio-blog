@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "My Journey from Graduate to Manual Tester: Lessons Learned",
+      "summary": "Sharing my personal experience transitioning from university to becoming a manual tester, including challenges faced, skills developed, and valuable insights for fellow freshers.",
+      "author": "Hue Nguyen Thi",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z",
+      "tags": ["career", "manual-testing", "fresh-graduate", "journey"],
+      "published": true,
+      "featured_image": "/assets/images/blog/testing-journey.jpg",
+      "read_time": "8 min read",
+      "category": "Career"
+    },
+    {
+      "id": "2",
+      "title": "Essential Manual Testing Techniques Every Beginner Should Know",
+      "summary": "A comprehensive guide to fundamental manual testing techniques including boundary value analysis, equivalence partitioning, and exploratory testing methods.",
+      "author": "Hue Nguyen Thi",
+      "created_at": "2024-01-10T14:30:00Z",
+      "updated_at": "2024-01-10T14:30:00Z",
+      "tags": ["manual-testing", "testing-techniques", "qa", "beginner-guide"],
+      "published": true,
+      "featured_image": "/assets/images/blog/testing-techniques.jpg",
+      "read_time": "12 min read",
+      "category": "Testing"
+    },
+    {
+      "id": "3",
+      "title": "How to Write Effective Test Cases: A Step-by-Step Guide",
+      "summary": "Master the art of writing clear, comprehensive test cases that ensure thorough coverage and help identify bugs effectively in software applications.",
+      "author": "Hue Nguyen Thi",
+      "created_at": "2024-01-05T09:15:00Z",
+      "updated_at": "2024-01-05T09:15:00Z",
+      "tags": ["test-cases", "documentation", "qa-process", "best-practices"],
+      "published": true,
+      "featured_image": "/assets/images/blog/test-cases-guide.jpg",
+      "read_time": "10 min read",
+      "category": "Testing"
+    },
+    {
+      "id": "4",
+      "title": "Bug Reporting Best Practices: From Discovery to Resolution",
+      "summary": "Learn how to write clear, actionable bug reports that help developers understand and fix issues quickly, improving the overall development process.",
+      "author": "Hue Nguyen Thi",
+      "created_at": "2023-12-28T16:45:00Z",
+      "updated_at": "2023-12-28T16:45:00Z",
+      "tags": ["bug-reporting", "qa-process", "communication", "jira"],
+      "published": true,
+      "featured_image": "/assets/images/blog/bug-reporting.jpg",
+      "read_time": "6 min read",
+      "category": "Testing"
+    },
+    {
+      "id": "5",
+      "title": "Getting Started with JIRA for Test Management",
+      "summary": "A beginner-friendly guide to using JIRA for test case management, bug tracking, and project coordination in agile development environments.",
+      "author": "Hue Nguyen Thi",
+      "created_at": "2023-12-20T11:20:00Z",
+      "updated_at": "2023-12-20T11:20:00Z",
+      "tags": ["jira", "test-management", "bug-tracking", "tools"],
+      "published": true,
+      "featured_image": "/assets/images/blog/jira-guide.jpg",
+      "read_time": "9 min read",
+      "category": "Tools"
+    }
+  ],
+  "total": 5,
+  "categories": ["Career", "Testing", "Tools"],
+  "tags": ["career", "manual-testing", "fresh-graduate", "journey", "testing-techniques", "qa", "beginner-guide", "test-cases", "documentation", "qa-process", "best-practices", "bug-reporting", "communication", "jira", "test-management", "bug-tracking", "tools"],
+  "updated_at": "2024-01-15T10:00:00Z"
+} 

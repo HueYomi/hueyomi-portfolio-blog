@@ -1,0 +1,19 @@
+{
+  "id": "3",
+  "title": "AWS Deployment Strategies for Modern Web Apps",
+  "content": "# AWS Deployment Strategies for Modern Web Apps\n\nDeploying modern web applications on AWS offers numerous options and strategies. In this comprehensive guide, we'll explore different deployment approaches, from simple static hosting to complex serverless architectures.\n\n## Overview of AWS Deployment Options\n\nAWS provides multiple services for hosting web applications:\n\n- **S3 + CloudFront**: Static websites and SPAs\n- **Elastic Beanstalk**: Platform-as-a-Service for web apps\n- **EC2**: Full control over virtual machines\n- **Lambda + API Gateway**: Serverless applications\n- **ECS/EKS**: Containerized applications\n- **Amplify**: Full-stack development platform\n\n## Strategy 1: Static Website Hosting (S3 + CloudFront)\n\nPerfect for React, Vue, Angular, and static sites.\n\n### Setup Process\n\n1. **Create S3 Bucket**\n2. **Configure Static Website Hosting**\n3. **Set Bucket Policy for public access**\n4. **Deploy your application**\n5. **Configure CloudFront for global CDN**\n\n## Strategy 2: Serverless Full-Stack\n\nIdeal for dynamic applications with backend requirements using Lambda + API Gateway.\n\n### Architecture\nCloudFront → S3 (Frontend) + API Gateway → Lambda → DynamoDB\n\n### Benefits\n- Pay per request\n- Automatic scaling\n- No server management\n- Built-in security\n\n## Strategy 3: Container Deployment\n\nBest for applications requiring more control using ECS Fargate or EKS.\n\n### Use Cases\n- Complex applications\n- Custom runtime requirements\n- Microservices architecture\n- Legacy application migration\n\n## Strategy 4: AWS Amplify\n\nSimplest option for full-stack applications with built-in CI/CD.\n\n### Features\n- Git-based deployments\n- Built-in authentication\n- GraphQL APIs\n- Real-time data\n\n## Best Practices\n\n### Cost Optimization\n- Use appropriate S3 storage classes\n- Configure CloudFront caching\n- Optimize Lambda functions\n- Monitor usage with CloudWatch\n\n### Security\n- Implement proper IAM roles and policies\n- Use environment variables securely\n- Enforce HTTPS\n- Enable AWS WAF for protection\n\n### Performance\n- Use CloudFront for global distribution\n- Optimize images and assets\n- Implement caching strategies\n- Monitor performance metrics\n\n## Conclusion\n\nChoosing the right AWS deployment strategy depends on your application's requirements:\n\n- **Static sites**: S3 + CloudFront\n- **Simple APIs**: Lambda + API Gateway\n- **Complex applications**: ECS/EKS\n- **Rapid development**: AWS Amplify\n\nConsider factors like cost, scalability, maintenance overhead, and team expertise when making your decision. Start simple and evolve your architecture as your needs grow.",
+  "summary": "Explore different deployment strategies for web applications on AWS, including S3 static hosting, CloudFront CDN, and serverless architectures.",
+  "author": "Hue Nguyen Thi",
+  "created_at": "2024-01-05T09:15:00Z",
+  "updated_at": "2024-01-05T09:15:00Z",
+  "tags": ["aws", "deployment", "cloud", "devops"],
+  "published": true,
+  "featured_image": "/assets/images/blog/aws-deployment.jpg",
+  "read_time": "10 min read",
+  "category": "DevOps",
+  "seo": {
+    "meta_title": "AWS Deployment Strategies for Modern Web Apps - Complete Guide",
+    "meta_description": "Learn different AWS deployment strategies for web applications including S3, CloudFront, Lambda, ECS, and Amplify with practical examples.",
+    "og_image": "/assets/images/blog/aws-deployment-og.jpg"
+  }
+} 
