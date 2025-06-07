@@ -1,6 +1,12 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
+
+const config: ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: true,
+}
 
 const theme = extendTheme({
+  config,
   colors: {
     brand: {
       50: '#f7fafc',
@@ -20,17 +26,35 @@ const theme = extendTheme({
     body: 'Inter, sans-serif',
   },
   styles: {
-    global: {
+    global: (props: any) => ({
       body: {
-        bg: 'white',
-        color: 'gray.800',
+        bg: props.colorMode === 'dark' ? 'gray.900' : 'white',
+        color: props.colorMode === 'dark' ? 'gray.100' : 'gray.800',
+        transition: 'background-color 0.2s, color 0.2s',
       },
-    },
+      '*': {
+        scrollbarWidth: 'thin',
+        scrollbarColor: props.colorMode === 'dark' ? '#4A5568 #1A202C' : '#CBD5E0 #F7FAFC',
+      },
+      '*::-webkit-scrollbar': {
+        width: '8px',
+      },
+      '*::-webkit-scrollbar-track': {
+        bg: props.colorMode === 'dark' ? 'gray.800' : 'gray.100',
+      },
+      '*::-webkit-scrollbar-thumb': {
+        bg: props.colorMode === 'dark' ? 'gray.600' : 'gray.400',
+        borderRadius: '4px',
+      },
+      '*::-webkit-scrollbar-thumb:hover': {
+        bg: props.colorMode === 'dark' ? 'gray.500' : 'gray.500',
+      },
+    }),
   },
   components: {
     Button: {
       defaultProps: {
-        colorScheme: 'brand',
+        colorScheme: 'orange',
       },
     },
   },

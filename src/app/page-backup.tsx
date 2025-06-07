@@ -9,7 +9,7 @@ export default function Home() {
       <VStack spacing={8} align="center" minH="80vh" justify="center">
         <Box textAlign="center">
           <Heading as="h1" size="2xl" mb={4}>
-            Welcome to Hueyomi Portfolio Blog
+            Welcome to Hue Yomi Portfolio Blog
           </Heading>
           <Text fontSize="xl" color="gray.600" mb={8}>
             Personal portfolio and blog website built with Next.js and Chakra UI
