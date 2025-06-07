@@ -1,0 +1,19 @@
+{
+  "name": "Hue Nguyen Thi",
+  "title": "Manual Tester",
+  "email": "hue.nguyenthi@example.com",
+  "phone": "+81-xxx-xxxx-xxxx",
+  "location": "Tokyo, Japan",
+  "summary": "Enthusiastic and detail-oriented fresher manual tester with a strong foundation in software testing principles and methodologies. Passionate about ensuring software quality and user experience through thorough testing and bug identification.",
+  "website": "https://hueyomi-portfolio.com",
+  "linkedin": "https://linkedin.com/in/hue-nguyen-thi",
+  "github": "https://github.com/hueyomi",
+  "profileImage": "/assets/images/profile.jpg",
+  "typewriterTexts": [
+    "Manual Tester",
+    "QA Enthusiast",
+    "Bug Hunter",
+    "Quality Advocate"
+  ],
+  "updated_at": "2024-01-15T10:00:00Z"
+} 

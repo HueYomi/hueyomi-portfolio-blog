@@ -1,0 +1,95 @@
+{
+  "badges": [
+    {
+      "id": "1",
+      "name": "Bug Hunter",
+      "description": "Excellence in identifying and documenting software defects with precision and detail",
+      "issuer": "QA Training Institute",
+      "issue_date": "2023-12-15",
+      "badge_url": "/assets/images/badges/bug-hunter.svg",
+      "verify_url": "https://qainstitute.com/badges/bug-hunter",
+      "category": "Testing",
+      "color": "#ff5722"
+    },
+    {
+      "id": "2",
+      "name": "Test Case Designer",
+      "description": "Proficiency in creating comprehensive and effective test cases for various scenarios",
+      "issuer": "ISTQB",
+      "issue_date": "2023-11-20",
+      "badge_url": "/assets/images/badges/test-case-designer.svg",
+      "verify_url": "https://istqb.org/badges/test-case-designer",
+      "category": "Testing",
+      "color": "#2196f3"
+    },
+    {
+      "id": "3",
+      "name": "Quality Advocate",
+      "description": "Commitment to software quality and continuous improvement in testing practices",
+      "issuer": "Quality Assurance Institute",
+      "issue_date": "2023-12-10",
+      "badge_url": "/assets/images/badges/quality-advocate.svg",
+      "verify_url": "https://qai.org/badges/quality-advocate",
+      "category": "QA",
+      "color": "#4caf50"
+    },
+    {
+      "id": "4",
+      "name": "JIRA Expert",
+      "description": "Advanced proficiency in using JIRA for defect tracking and test management",
+      "issuer": "Atlassian",
+      "issue_date": "2023-11-30",
+      "badge_url": "/assets/images/badges/jira-expert.svg",
+      "verify_url": "https://atlassian.com/certification/jira-expert",
+      "category": "Tools",
+      "color": "#0052cc"
+    },
+    {
+      "id": "5",
+      "name": "Detail Detective",
+      "description": "Exceptional attention to detail in identifying edge cases and subtle defects",
+      "issuer": "Testing Excellence Academy",
+      "issue_date": "2023-12-05",
+      "badge_url": "/assets/images/badges/detail-detective.svg",
+      "verify_url": "https://testingacademy.com/badges/detail-detective",
+      "category": "Skills",
+      "color": "#9c27b0"
+    },
+    {
+      "id": "6",
+      "name": "Agile Tester",
+      "description": "Understanding of testing practices in Agile development environments",
+      "issuer": "Agile Alliance",
+      "issue_date": "2023-10-15",
+      "badge_url": "/assets/images/badges/agile-tester.svg",
+      "verify_url": "https://agilealliance.org/badges/agile-tester",
+      "category": "Methodology",
+      "color": "#ff9800"
+    },
+    {
+      "id": "7",
+      "name": "API Tester",
+      "description": "Competency in API testing using tools like Postman and understanding REST principles",
+      "issuer": "Postman Academy",
+      "issue_date": "2023-11-25",
+      "badge_url": "/assets/images/badges/api-tester.svg",
+      "verify_url": "https://academy.postman.com/badges/api-tester",
+      "category": "Technical",
+      "color": "#ff6b35"
+    },
+    {
+      "id": "8",
+      "name": "Learning Enthusiast",
+      "description": "Continuous learning and self-improvement in software testing domain",
+      "issuer": "Professional Development Institute",
+      "issue_date": "2023-12-20",
+      "badge_url": "/assets/images/badges/learning-enthusiast.svg",
+      "verify_url": "https://pdi.org/badges/learning-enthusiast",
+      "category": "Personal",
+      "color": "#607d8b"
+    }
+  ],
+  "categories": ["Testing", "QA", "Tools", "Skills", "Methodology", "Technical", "Personal"],
+  "total": 8,
+  "updated_at": "2024-01-15T10:00:00Z"
+} 

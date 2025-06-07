@@ -1,0 +1,45 @@
+{
+  "certificates": [
+    {
+      "id": "1",
+      "name": "ISTQB Foundation Level Certification",
+      "issuer": "International Software Testing Qualifications Board",
+      "issue_date": "2023-11-15",
+      "expiry_date": null,
+      "credential_id": "ISTQB-FL-123456",
+      "credential_url": "https://www.istqb.org/certification-path-root/foundation-level/foundation-level-syllabus.html",
+      "description": "Validates fundamental knowledge of software testing principles, techniques, and best practices according to international standards.",
+      "certificate_image": "/assets/images/certificates/istqb-foundation.jpg",
+      "badge_image": "/assets/images/certificates/istqb-badge.png",
+      "skills": ["Software Testing", "Test Design", "Test Management", "Quality Assurance"]
+    },
+    {
+      "id": "2",
+      "name": "Manual Testing Certification",
+      "issuer": "QA Training Institute",
+      "issue_date": "2023-12-20",
+      "expiry_date": "2026-12-20",
+      "credential_id": "QTI-MT-789012",
+      "credential_url": "https://qainstitute.com/verify/789012",
+      "description": "Comprehensive certification covering manual testing methodologies, test case design, defect management, and testing tools.",
+      "certificate_image": "/assets/images/certificates/manual-testing-cert.jpg",
+      "badge_image": "/assets/images/certificates/manual-testing-badge.png",
+      "skills": ["Manual Testing", "Test Case Design", "Bug Reporting", "JIRA", "TestRail"]
+    },
+    {
+      "id": "3",
+      "name": "Agile Testing Fundamentals",
+      "issuer": "Agile Alliance",
+      "issue_date": "2023-10-10",
+      "expiry_date": null,
+      "credential_id": "AA-ATF-345678",
+      "credential_url": "https://agilealliance.org/certification/verify/345678",
+      "description": "Understanding of testing practices in Agile development environments, including continuous testing and collaboration.",
+      "certificate_image": "/assets/images/certificates/agile-testing.jpg",
+      "badge_image": "/assets/images/certificates/agile-testing-badge.png",
+      "skills": ["Agile Testing", "Scrum", "Continuous Testing", "Test Automation Basics"]
+    }
+  ],
+  "total": 4,
+  "updated_at": "2024-01-15T10:00:00Z"
+} 

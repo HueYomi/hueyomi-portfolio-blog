@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "generate-pdf": "node scripts/generate-pdf.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "2.1.1",
@@ -28,6 +28,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.2.4",
+    "puppeteer": "^22.0.0",
     "typescript": "^5"
   }
 }
