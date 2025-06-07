@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Contact() {
   return (
     <div style={{ padding: '40px', fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
@@ -182,7 +184,7 @@ export default function Contact() {
       </div>
       
       <div style={{ marginTop: '40px', textAlign: 'center' }}>
-        <a href="/" style={{ color: '#0066cc', textDecoration: 'none' }}>← Back to Home</a>
+        <Link href="/" style={{ color: '#0066cc', textDecoration: 'none' }}>← Back to Home</Link>
       </div>
     </div>
   )

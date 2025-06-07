@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Projects() {
   const projects = [
     {
@@ -100,7 +102,7 @@ export default function Projects() {
       </div>
       
       <div style={{ marginTop: '40px', textAlign: 'center' }}>
-        <a href="/" style={{ color: '#0066cc', textDecoration: 'none' }}>← Back to Home</a>
+        <Link href="/" style={{ color: '#0066cc', textDecoration: 'none' }}>← Back to Home</Link>
       </div>
     </div>
   )

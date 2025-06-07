@@ -1,4 +1,4 @@
-# Hueyomi Portfolio Blog
+# Hue Yomi Portfolio Blog
 
 A modern portfolio and blog website built with Next.js 15, TypeScript, and Chakra UI.
 
