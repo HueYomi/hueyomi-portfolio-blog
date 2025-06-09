@@ -5,16 +5,283 @@
   "phone": "+81-xxx-xxxx-xxxx",
   "location": "Tokyo, Japan",
   "summary": "Enthusiastic and detail-oriented fresher manual tester with a strong foundation in software testing principles and methodologies. Passionate about ensuring software quality and user experience through thorough testing and bug identification.",
+  "about": "I am a dedicated manual tester with a passion for quality assurance and software testing. My journey in tech began with a curiosity about how applications work and a desire to ensure they provide the best possible user experience. I believe that thorough testing is crucial for delivering reliable software that users can trust.",
+  "personalStory": "My journey into tech wasn't a straight path. Growing up in Vietnam, I was always the person my family called when their phones or computers weren't working properly. I had this natural curiosity about how things worked and an eye for spotting when something wasn't quite right. When I moved to Tokyo for new opportunities, I discovered the world of software testing and realized it was the perfect blend of my analytical mind and my desire to help create better user experiences.",
+  "journey": [
+    {
+      "year": "2020",
+      "title": "The Beginning",
+      "description": "Started my journey in tech by taking online courses in software testing while working part-time jobs in Tokyo."
+    },
+    {
+      "year": "2021",
+      "title": "First Steps",
+      "description": "Completed my first certification in manual testing and began practicing with real-world projects."
+    },
+    {
+      "year": "2022",
+      "title": "Growing Confidence",
+      "description": "Joined testing communities and started contributing to open-source projects to gain experience."
+    },
+    {
+      "year": "2023",
+      "title": "Professional Growth",
+      "description": "Landed my first professional testing role and discovered my passion for ensuring quality user experiences."
+    },
+    {
+      "year": "2024",
+      "title": "Looking Forward",
+      "description": "Continuing to learn and grow while building this portfolio to share my journey with others."
+    }
+  ],
+  "hobbies": [
+    {
+      "name": "Photography",
+      "description": "Capturing the beauty of Tokyo's streets and the changing seasons. I love finding the perfect angle to tell a story through images.",
+      "icon": "📸"
+    },
+    {
+      "name": "Cooking",
+      "description": "Experimenting with fusion recipes that blend Vietnamese flavors with Japanese ingredients. My friends are my willing taste testers!",
+      "icon": "🍜"
+    },
+    {
+      "name": "Reading",
+      "description": "Diving into mystery novels and tech blogs. There's something satisfying about solving puzzles, whether in books or in code.",
+      "icon": "📚"
+    },
+    {
+      "name": "Hiking",
+      "description": "Exploring the mountains around Tokyo on weekends. Nature helps me clear my mind and think creatively about testing scenarios.",
+      "icon": "🥾"
+    },
+    {
+      "name": "Language Learning",
+      "description": "Improving my Japanese while helping others learn Vietnamese. Language exchange has become one of my favorite ways to meet new people.",
+      "icon": "🗣️"
+    }
+  ],
+  "travelExperiences": [
+    {
+      "place": "Kyoto, Japan",
+      "year": "2023",
+      "description": "A weekend trip that reminded me why I fell in love with Japanese culture. The temples and traditional gardens were incredibly peaceful.",
+      "highlight": "Participated in a traditional tea ceremony"
+    },
+    {
+      "place": "Osaka, Japan",
+      "year": "2023",
+      "description": "Food paradise! Tried authentic takoyaki and okonomiyaki. The street food scene inspired my cooking experiments back home.",
+      "highlight": "Learned to make takoyaki from a local vendor"
+    },
+    {
+      "place": "Nikko, Japan",
+      "year": "2024",
+      "description": "My first solo hiking adventure in Japan. The waterfalls and shrines were breathtaking, and I gained confidence in exploring alone.",
+      "highlight": "Hiked to Kegon Falls and felt truly accomplished"
+    }
+  ],
+  "wishList": [
+    {
+      "category": "Travel",
+      "items": [
+        "Visit the cherry blossoms in Yoshino, Japan",
+        "Take a cooking class in Italy",
+        "Experience the Northern Lights in Iceland",
+        "Go back to Vietnam and show my Japanese friends my hometown",
+        "Road trip across New Zealand"
+      ]
+    },
+    {
+      "category": "Professional",
+      "items": [
+        "Become a senior QA engineer",
+        "Contribute to a major open-source testing framework",
+        "Speak at a tech conference about testing methodologies",
+        "Mentor other newcomers to the tech industry",
+        "Start a testing blog to share knowledge"
+      ]
+    },
+    {
+      "category": "Personal",
+      "items": [
+        "Learn to play the ukulele",
+        "Master the art of Japanese calligraphy",
+        "Run a half marathon in Tokyo",
+        "Grow my own herb garden",
+        "Write a cookbook of Vietnamese-Japanese fusion recipes"
+      ]
+    }
+  ],
+  "funFacts": [
+    "I can solve a Rubik's cube in under 2 minutes",
+    "I've never broken a bone despite being quite clumsy",
+    "I collect vintage postcards from places I visit",
+    "I can make 7 different types of Vietnamese pho",
+    "I once found a critical bug by accidentally spilling coffee on my keyboard"
+  ],
+  "values": [
+    "Curiosity - Always asking 'what if?' and 'why?'",
+    "Empathy - Understanding users' perspectives and frustrations",
+    "Persistence - Never giving up when hunting down elusive bugs",
+    "Growth - Constantly learning and improving my skills",
+    "Community - Believing that we're stronger when we help each other"
+  ],
   "website": "https://hueyomi-portfolio.com",
   "linkedin": "https://linkedin.com/in/hue-nguyen-thi",
   "github": "https://github.com/hueyomi",
-  "profileImage": "/assets/images/profile.jpg",
+  "twitter": "https://twitter.com/hueyomi",
+  "profileImage": "/assets/images/profile.svg",
+  "galleryImages": [
+    "/assets/images/gallery/tokyo-street.svg",
+    "/assets/images/gallery/cooking-experiment.svg",
+    "/assets/images/gallery/hiking-nikko.svg",
+    "/assets/images/gallery/cherry-blossoms.svg",
+    "/assets/images/gallery/workspace.svg"
+  ],
+  "storyAlbum": [
+    {
+      "id": 1,
+      "title": "Dreams Under Starlight",
+      "image": "/assets/images/story/chapter-06-dreams.jpg",
+      "note": "Every starry night, I sit and dream about wonderful things to come. Dreams of becoming a speaker, traveling the world, and inspiring others. These dreams are like guiding stars, lighting the path ahead! ✨🌙",
+      "year": "Present",
+      "emotion": "wonder"
+    },
+    {
+      "id": 2,
+      "title": "Celebrating Every Victory",
+      "image": "/assets/images/story/chapter-09-celebration.jpg",
+      "note": "Every success, big or small, deserves celebration! From passing a difficult test case to completing a major project. I learned to cherish every moment of happiness and share joy with others! 🎉🎂",
+      "year": "2024",
+      "emotion": "joy"
+    },
+    {
+      "id": 3,
+      "title": "The Professional Today",
+      "image": "/assets/images/story/chapter-05-present.jpg",
+      "note": "Look at me now! 🎉 From a curious kid in Vietnam to a confident QA professional in Tokyo. Every test case I write, every bug I catch, every user experience I help improve - it all feels like I'm living my purpose. The journey continues! 💪✨",
+      "year": "2023-2024",
+      "emotion": "pride"
+    },
+    {
+      "id": 4,
+      "title": "The Power of Friendship",
+      "image": "/assets/images/story/chapter-07-friendship.jpg",
+      "note": "Friendship became the most precious gift I found in Tokyo. Friends from all over the world, sharing moments of joy and sorrow together. We grew up together, overcoming every challenge as one! 💕👫",
+      "year": "2022-2024",
+      "emotion": "joy"
+    },
+    {
+      "id": 5,
+      "title": "Storms Make Us Stronger",
+      "image": "/assets/images/story/chapter-08-challenges.jpg",
+      "note": "Life isn't always rosy. There were times I faced difficulties, failures, and wanted to quit. But every storm taught me valuable lessons. I learned that after rain comes sunshine, and I'm stronger than I thought! 🌈⛈️",
+      "year": "2021-2023",
+      "emotion": "determination"
+    },
+    {
+      "id": 6,
+      "title": "The Learning Journey",
+      "image": "/assets/images/story/chapter-04-learning.jpg",
+      "note": "Late nights, countless tutorials, practice projects, and SO much coffee! ☕ Learning to be a tester wasn't just about memorizing techniques - it was about developing an eye for detail and a passion for quality. Every bug I found felt like solving a mystery! 🔍📚",
+      "year": "2020-2022",
+      "emotion": "determination"
+    },
+    {
+      "id": 7,
+      "title": "First Glimpse of Tokyo",
+      "image": "/assets/images/story/chapter-03-tokyo.jpg",
+      "note": "WOW! Nothing could have prepared me for the energy of Tokyo. The neon lights, the bustling streets, the incredible technology everywhere - I felt like I was in an anime! This city would become my teacher, my challenge, and my home. 🏙️💫",
+      "year": "2020",
+      "emotion": "amazement"
+    },
+    {
+      "id": 8,
+      "title": "The Great Journey",
+      "image": "/assets/images/story/chapter-02-journey.jpg",
+      "note": "The day I boarded that plane to Tokyo, my heart was racing with excitement and nervousness. I was leaving everything familiar behind to chase a dream I wasn't even sure about yet. But sometimes the best adventures start with a leap of faith! ✈️🌟",
+      "year": "2020",
+      "emotion": "courage"
+    },
+    {
+      "id": 9,
+      "title": "Childhood Dreams",
+      "image": "/assets/images/story/chapter-01-childhood.jpg",
+      "note": "Growing up in the beautiful countryside of Vietnam, I was always the curious child who loved solving puzzles and helping others fix their problems. Little did I know this would lead me to my passion for testing! 🌾✨",
+      "year": "2000-2018",
+      "emotion": "wonder"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Testing",
+      "items": [
+        { "name": "Manual Testing", "level": 85 },
+        { "name": "Test Case Design", "level": 80 },
+        { "name": "Bug Reporting", "level": 90 },
+        { "name": "Regression Testing", "level": 75 },
+        { "name": "User Acceptance Testing", "level": 80 }
+      ]
+    },
+    {
+      "category": "Tools",
+      "items": [
+        { "name": "Jira", "level": 85 },
+        { "name": "TestRail", "level": 70 },
+        { "name": "Postman", "level": 75 },
+        { "name": "Browser DevTools", "level": 80 },
+        { "name": "SQL", "level": 65 }
+      ]
+    },
+    {
+      "category": "Soft Skills",
+      "items": [
+        { "name": "Attention to Detail", "level": 95 },
+        { "name": "Communication", "level": 85 },
+        { "name": "Problem Solving", "level": 80 },
+        { "name": "Team Collaboration", "level": 90 },
+        { "name": "Documentation", "level": 85 }
+      ]
+    }
+  ],
+  "socialMedia": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/hue-nguyen-thi",
+      "icon": "FaLinkedin"
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/hueyomi",
+      "icon": "FaGithub"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/hueyomi",
+      "icon": "FaTwitter"
+    },
+    {
+      "platform": "Email",
+      "url": "mailto:hue.nguyenthi@example.com",
+      "icon": "FaEnvelope"
+    }
+  ],
   "typewriterTexts": [
     "Hue Yomi",
     "Manual Tester",
     "QA Enthusiast",
     "Bug Hunter",
-    "Quality Advocate"
+    "Quality Advocate",
+    "Tokyo Explorer",
+    "Food Experimenter",
+    "Story Teller"
   ],
+  "seo": {
+    "meta_title": "About Hue Nguyen Thi - My Journey as a Manual Tester in Tokyo",
+    "meta_description": "Discover my personal journey from Vietnam to Tokyo, my passion for quality assurance, love for photography and cooking, and dreams for the future. This is my story.",
+    "keywords": ["personal story", "manual tester", "Tokyo life", "Vietnam", "quality assurance", "photography", "cooking", "travel", "personal journey"],
+    "og_image": "/assets/images/profile.svg"
+  },
   "updated_at": "2024-01-15T10:00:00Z"
 } 
