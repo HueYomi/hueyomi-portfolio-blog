@@ -1,6 +1,52 @@
 // Common types for the portfolio blog application
 
 // Profile Data Types
+export interface SocialMediaLink {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+export interface ProfileSEO {
+  meta_title: string;
+  meta_description: string;
+  keywords: string[];
+  og_image: string;
+}
+
+export interface JourneyStep {
+  year: string;
+  title: string;
+  description: string;
+}
+
+export interface Hobby {
+  name: string;
+  description: string;
+  icon: string;
+}
+
+export interface TravelExperience {
+  place: string;
+  year: string;
+  description: string;
+  highlight: string;
+}
+
+export interface WishListCategory {
+  category: string;
+  items: string[];
+}
+
+export interface StoryChapter {
+  id: number;
+  title: string;
+  image: string;
+  note: string;
+  year: string;
+  emotion: string;
+}
+
 export interface Profile {
   name: string;
   title: string;
@@ -8,11 +54,25 @@ export interface Profile {
   phone: string;
   location: string;
   summary: string;
+  about?: string; // Extended about section
+  personalStory?: string; // Personal background story
+  journey?: JourneyStep[]; // Career/life journey timeline
+  hobbies?: Hobby[]; // Personal hobbies and interests
+  travelExperiences?: TravelExperience[]; // Travel experiences
+  wishList?: WishListCategory[]; // Future goals and dreams
+  funFacts?: string[]; // Fun facts about the person
+  values?: string[]; // Personal values and beliefs
   website: string;
   linkedin: string;
   github: string;
+  twitter?: string;
   profileImage: string;
+  galleryImages?: string[]; // Gallery of personal photos
+  storyAlbum?: StoryChapter[]; // Interactive story album
+  skills?: SkillCategory[]; // Skills with categories and levels
+  socialMedia?: SocialMediaLink[]; // Social media links
   typewriterTexts?: string[]; // Optional field for typewriter effect
+  seo?: ProfileSEO; // SEO metadata
   updated_at: string;
 }
 

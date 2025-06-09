@@ -1,0 +1,13 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#E91E63"/>
+  <rect x="50" y="50" width="300" height="200" fill="#FCE4EC" rx="10"/>
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#C2185B">Cherry</text>
+  <text x="200" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#C2185B">Blossoms</text>
+  <circle cx="130" cy="100" r="8" fill="#C2185B"/>
+  <circle cx="150" cy="90" r="8" fill="#C2185B"/>
+  <circle cx="170" cy="100" r="8" fill="#C2185B"/>
+  <circle cx="230" cy="100" r="8" fill="#C2185B"/>
+  <circle cx="250" cy="90" r="8" fill="#C2185B"/>
+  <circle cx="270" cy="100" r="8" fill="#C2185B"/>
+  <rect x="180" y="180" width="40" height="30" fill="#C2185B" rx="5"/>
+</svg> 
