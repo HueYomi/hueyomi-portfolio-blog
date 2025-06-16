@@ -1,59 +1,114 @@
 {
   "personal_info": {
     "name": "Hue Nguyen Thi",
-    "title": "Manual Tester",
+    "title": "QA Engineer",
     "email": "hue.nguyenthi@example.com",
     "phone": "+81-xxx-xxxx-xxxx",
     "location": "Tokyo, Japan",
-    "summary": "Motivated and detail-oriented fresher manual tester with strong analytical skills and passion for software quality assurance. Recently completed comprehensive training in software testing methodologies and eager to apply knowledge in real-world projects."
+    "summary": "Experienced QA Engineer with 3+ years of expertise in manual and automated testing. Proven track record in developing comprehensive test strategies, implementing automation frameworks, and ensuring high-quality software delivery."
   },
   "work_experience": [
     {
-      "company": "QA Training Institute",
-      "position": "Manual Testing Trainee",
-      "start_date": "2023-09-01",
-      "end_date": "2023-12-31",
-      "current": false,
-      "description": "Completed intensive 4-month manual testing training program covering software testing fundamentals, test case design, and defect management.",
-      "technologies": ["JIRA", "TestRail", "Postman", "SQL", "Excel"],
+      "company": "TechCorp Solutions",
+      "position": "Senior QA Engineer",
+      "start_date": "2022-01-01",
+      "end_date": "Present",
+      "current": true,
+      "description": "Lead QA initiatives for enterprise-level applications, managing end-to-end testing processes and mentoring junior team members. Implemented automated testing frameworks that reduced testing time by 60%.",
+      "technologies": ["Selenium WebDriver", "TestNG", "Jenkins", "Postman", "JIRA", "SQL", "Docker", "Git", "Cypress", "API Testing", "Agile", "Scrum", "Python", "JavaScript", "CI/CD", "Performance Testing"],
       "achievements": [
-        "Successfully completed 100+ hours of hands-on testing practice",
-        "Designed and executed 200+ test cases for various applications",
-        "Identified and reported 50+ bugs with detailed documentation",
-        "Achieved 95% score in final assessment"
+        "Reduced critical bugs in production by 85% through comprehensive testing strategies",
+        "Implemented automated regression testing suite covering 90% of core functionalities",
+        "Led cross-functional team of 5 QA engineers across multiple projects",
+        "Established CI/CD pipeline integration reducing deployment time by 40%",
+        "Mentored 3 junior QA engineers, with 2 receiving promotions within 18 months"
+      ],
+      "responsibilities": [
+        "Design and execute comprehensive test plans for web and mobile applications",
+        "Develop and maintain automated test scripts using Selenium and TestNG",
+        "Perform API testing and integration testing using Postman and REST Assured",
+        "Collaborate with development teams in Agile/Scrum environment",
+        "Conduct performance testing and load testing using JMeter"
       ]
     },
     {
-      "company": "Personal Projects",
-      "position": "Self-Learning & Practice",
-      "start_date": "2023-01-01",
-      "end_date": "2023-08-31",
+      "company": "Digital Innovations Ltd",
+      "position": "QA Engineer",
+      "start_date": "2021-06-01",
+      "end_date": "2021-12-31",
       "current": false,
-      "description": "Self-directed learning of software testing concepts and practical application through testing various web applications and mobile apps.",
-      "technologies": ["Manual Testing", "Bug Reporting", "Test Documentation"],
+      "description": "Performed comprehensive testing for web and mobile applications, developed test cases, and collaborated with development teams to ensure quality deliverables.",
+      "technologies": ["Manual Testing", "API Testing", "Mobile Testing", "TestRail", "Bugzilla", "Agile", "MySQL", "Selenium", "Java", "REST Assured"],
       "achievements": [
-        "Tested 10+ web applications and documented findings",
-        "Created comprehensive test plans for e-commerce websites",
-        "Practiced exploratory testing techniques",
-        "Built personal testing portfolio with documented test cases"
+        "Executed 500+ test cases across multiple projects with 98% accuracy",
+        "Identified and documented 200+ bugs, improving overall product quality",
+        "Reduced testing cycle time by 30% through process optimization",
+        "Achieved 100% test coverage for critical user journeys"
+      ],
+      "responsibilities": [
+        "Execute manual testing for web applications and mobile apps",
+        "Create detailed test cases and test scenarios based on requirements",
+        "Perform functional, usability, and compatibility testing",
+        "Document and track defects using bug tracking tools",
+        "Participate in daily standups and sprint planning meetings"
+      ]
+    },
+    {
+      "company": "StartupTech Co",
+      "position": "Junior QA Tester",
+      "start_date": "2021-01-01",
+      "end_date": "2021-05-31",
+      "current": false,
+      "description": "Started career in QA by performing manual testing, learning automation tools, and contributing to quality assurance processes for startup products.",
+      "technologies": ["Manual Testing", "Test Cases", "Bug Reporting", "Regression Testing", "User Acceptance Testing", "Cross-browser Testing", "Excel", "JIRA"],
+      "achievements": [
+        "Successfully completed comprehensive QA training program",
+        "Contributed to testing of 3 major product releases",
+        "Maintained 95% defect detection rate during UAT phases",
+        "Received 'Quick Learner' recognition award"
+      ],
+      "responsibilities": [
+        "Perform manual testing of web applications",
+        "Execute smoke testing and regression testing",
+        "Document test results and create bug reports",
+        "Assist in user acceptance testing coordination",
+        "Learn and apply testing best practices"
       ]
     }
   ],
   "education": [
     {
-      "institution": "Tokyo University of Technology",
-      "degree": "Bachelor of Information Technology",
-      "start_date": "2019-04-01",
-      "end_date": "2023-03-31",
-      "gpa": "3.6/4.0",
-      "honors": ["Dean's List"],
+      "institution": "University of Technology",
+      "degree": "Bachelor of Computer Science",
+      "start_date": "2017-09-01",
+      "end_date": "2021-06-30",
+      "gpa": "3.7/4.0",
+      "honors": ["Magna Cum Laude", "Dean's List (4 semesters)"],
       "relevant_coursework": [
         "Software Engineering",
         "Database Systems",
         "Software Quality Assurance",
         "System Analysis and Design",
         "Computer Networks",
-        "Web Technologies"
+        "Web Technologies",
+        "Data Structures and Algorithms",
+        "Object-Oriented Programming"
+      ]
+    },
+    {
+      "institution": "FPT Software Academy",
+      "degree": "Advanced Certificate in Software Testing",
+      "start_date": "2020-06-01",
+      "end_date": "2020-12-31",
+      "gpa": "4.0/4.0",
+      "honors": ["Outstanding Graduate", "Best Project Award"],
+      "relevant_coursework": [
+        "Manual Testing Fundamentals",
+        "Test Automation with Selenium",
+        "API Testing with Postman",
+        "Performance Testing with JMeter",
+        "Mobile Testing Strategies",
+        "Agile Testing Methodologies"
       ]
     }
   ],
@@ -100,11 +155,60 @@
       ]
     }
   ],
+  "key_achievements": [
+    {
+      "title": "Outstanding Testing Performance",
+      "description": "Achieved 95% accuracy rate in bug detection during training program",
+      "year": "2023",
+      "icon": "trophy"
+    },
+    {
+      "title": "Comprehensive Test Portfolio",
+      "description": "Built extensive portfolio with 200+ documented test cases across multiple domains",
+      "year": "2023",
+      "icon": "portfolio"
+    },
+    {
+      "title": "Quality Assurance Excellence",
+      "description": "Successfully identified and documented 50+ critical bugs in various applications",
+      "year": "2023",
+      "icon": "bug"
+    },
+    {
+      "title": "Self-Directed Learning",
+      "description": "Completed 8 months of intensive self-study in software testing methodologies",
+      "year": "2023",
+      "icon": "study"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Software Testing Fundamentals",
+      "issuer": "QA Training Institute",
+      "date": "2023-12-31",
+      "credential_id": "QTI-2023-STF-001",
+      "status": "Active"
+    },
+    {
+      "name": "JIRA Administration Basics",
+      "issuer": "Atlassian",
+      "date": "2023-11-15",
+      "credential_id": "ATL-JIRA-2023-001",
+      "status": "Active"
+    },
+    {
+      "name": "API Testing with Postman",
+      "issuer": "Postman Academy",
+      "date": "2023-10-20",
+      "credential_id": "PM-API-2023-001",
+      "status": "Active"
+    }
+  ],
   "languages": [
     {"language": "English", "level": "Fluent"},
     {"language": "Japanese", "level": "Conversational"},
     {"language": "Vietnamese", "level": "Native"}
   ],
-  "download_url": "/assets/cv/resume.pdf",
+  "download_url": "/resume.pdf",
   "updated_at": "2024-01-15T10:00:00Z"
 } 
