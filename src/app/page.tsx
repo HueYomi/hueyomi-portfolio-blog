@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Heading,
@@ -18,9 +18,20 @@ import {
 } from '@chakra-ui/react';
 import { TypewriterText } from '@/components/ui/TypewriterText';
 import { DataLoader } from '@/components/ui/DataLoader';
+import { HeroSkeleton, BlogPostSkeleton } from '@/components/ui/LoadingSkeleton';
 import { useProfile, useRecentBlogPosts } from '@/hooks/useData';
 import { formatDate } from '@/utils';
 import NextLink from 'next/link';
+import dynamic from 'next/dynamic';
+
+// Dynamically import TypewriterText to avoid hydration mismatch
+const DynamicTypewriter = dynamic(
+  () => import('@/components/ui/TypewriterText').then(mod => ({ default: mod.TypewriterText })),
+  { 
+    ssr: false,
+    loading: () => <Text as="span" color="orange.500">Loading...</Text>
+  }
+);
 
 const Arrow = createIcon({
   displayName: 'Arrow',
@@ -36,8 +47,14 @@ const Arrow = createIcon({
 });
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
   const { data: profile, loading: profileLoading, error: profileError, refetch: refetchProfile } = useProfile();
   const { data: blogPosts, loading: blogLoading, error: blogError, refetch: refetchBlog } = useRecentBlogPosts(2);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Theme colors - moved to top level to avoid hook rule violations
   const grayTextColor = useColorModeValue('gray.500', 'gray.400');
@@ -61,40 +78,7 @@ export default function Home() {
               loading={profileLoading}
               error={profileError}
               onRetry={refetchProfile}
-              loadingComponent={
-                <Stack spacing={4} align="center">
-                  <Box
-                    h={{ base: '87px', sm: '87px', md: '132px' }}
-                    w="full"
-                    bg="gray.200"
-                    borderRadius="md"
-                    animation="pulse 2s infinite"
-                  />
-                  <Box
-                    h="6"
-                    w="80%"
-                    bg="gray.200"
-                    borderRadius="md"
-                    animation="pulse 2s infinite"
-                  />
-                  <Stack direction="column" spacing={3} align="center">
-                    <Box
-                      h="10"
-                      w="32"
-                      bg="gray.200"
-                      borderRadius="full"
-                      animation="pulse 2s infinite"
-                    />
-                    <Box
-                      h="6"
-                      w="24"
-                      bg="gray.200"
-                      borderRadius="md"
-                      animation="pulse 2s infinite"
-                    />
-                  </Stack>
-                </Stack>
-              }
+              loadingComponent={<HeroSkeleton />}
             >
               {profile && (
                 <>
@@ -105,13 +89,19 @@ export default function Home() {
                     minHeight={{ base: '87px', sm: '87px', md: '132px' }}
                   >
                     Hi, I'm<br />
-                    <TypewriterText
-                      as={'span'}
-                      color={brandColor}
-                      texts={profile.typewriterTexts || [profile.name, profile.title]}
-                      speed={120}
-                      deleteSpeed={50}
-                    />
+                    {mounted ? (
+                      <DynamicTypewriter
+                        as={'span'}
+                        color={brandColor}
+                        texts={profile.typewriterTexts || [profile.name, profile.title]}
+                        speed={120}
+                        deleteSpeed={50}
+                      />
+                    ) : (
+                      <Text as="span" color={brandColor}>
+                        {profile.name}
+                      </Text>
+                    )}
                   </Heading>
                   <Text color={grayTextColor}>
                     {profile.summary}
@@ -218,6 +208,7 @@ export default function Home() {
                       w="full"
                       h="full"
                       objectFit="cover"
+                      loading="lazy"
                     />
                   </Box>
                   <Stack>
@@ -230,142 +221,128 @@ export default function Home() {
                     >
                       {project.category}
                     </Text>
-                    <Heading
-                      color={headingColor}
-                      fontSize={'2xl'}
-                      fontFamily={'body'}
-                    >
+                    <Heading color={headingColor} fontSize={'2xl'} fontFamily={'body'}>
                       {project.title}
                     </Heading>
                     <Text color={grayTextColor}>
                       {project.description}
                     </Text>
                   </Stack>
-                  <NextLink href="/projects" passHref>
-                    <Button mt={4} colorScheme="orange" size="sm">
-                      View Project
-                    </Button>
-                  </NextLink>
                 </Box>
               ))}
             </SimpleGrid>
           </Container>
         </Box>
 
-        {/* Latest Blog Posts Section */}
+        {/* Recent Blog Posts Section */}
         <Box py={12}>
           <Container maxW={'6xl'}>
             <Heading as="h2" size="xl" mb={8} textAlign="center">
-              Latest Blog Posts
+              Recent Blog Posts
             </Heading>
             <DataLoader
               loading={blogLoading}
               error={blogError}
               onRetry={refetchBlog}
-              isEmpty={!blogPosts?.posts || blogPosts.posts.length === 0}
               loadingComponent={
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                  {[1, 2].map((i) => (
+                  <BlogPostSkeleton />
+                  <BlogPostSkeleton />
+                </SimpleGrid>
+              }
+            >
+              {blogPosts && blogPosts.posts.length > 0 ? (
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+                  {blogPosts.posts.map((post) => (
                     <Box
-                      key={i}
+                      key={post.id}
                       bg={cardBgColor}
-                      boxShadow={'md'}
+                      boxShadow={'lg'}
                       rounded={'md'}
                       p={6}
                       overflow={'hidden'}
+                      _hover={{
+                        transform: 'translateY(-2px)',
+                        boxShadow: 'xl',
+                      }}
+                      transition="all 0.3s"
                     >
-                      <Stack spacing={4}>
-                        <Box h="4" bg="gray.200" borderRadius="md" animation="pulse 2s infinite" />
-                        <Box h="6" bg="gray.200" borderRadius="md" animation="pulse 2s infinite" />
-                        <Box h="16" bg="gray.200" borderRadius="md" animation="pulse 2s infinite" />
-                        <Flex align="center">
-                          <Box w="10" h="10" bg="gray.200" borderRadius="full" animation="pulse 2s infinite" />
-                          <Stack ml={2} spacing={2}>
-                            <Box h="4" w="20" bg="gray.200" borderRadius="md" animation="pulse 2s infinite" />
-                            <Box h="3" w="32" bg="gray.200" borderRadius="md" animation="pulse 2s infinite" />
-                          </Stack>
-                        </Flex>
+                      <Box h={'200px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
+                        <Image
+                          src={post.featured_image}
+                          alt={post.title}
+                          w="full"
+                          h="full"
+                          objectFit="cover"
+                          loading="lazy"
+                        />
+                      </Box>
+                      <Stack>
+                        <Text color={grayTextColor} fontSize={'sm'}>
+                          {formatDate(post.created_at)} • {post.read_time}
+                        </Text>
+                        <Heading color={headingColor} fontSize={'xl'} fontFamily={'body'}>
+                          {post.title}
+                        </Heading>
+                        <Text color={grayTextColor}>
+                          {post.summary}
+                        </Text>
+                        <NextLink href={`/blog/${post.id}`} passHref>
+                          <Button variant={'link'} colorScheme={'orange'} size={'sm'} alignSelf="flex-start">
+                            Read More →
+                          </Button>
+                        </NextLink>
                       </Stack>
                     </Box>
                   ))}
                 </SimpleGrid>
-              }
-              emptyComponent={
+              ) : (
                 <Text textAlign="center" color={grayTextColor}>
-                  No blog posts available yet. Check back soon for new content!
+                  No blog posts available yet.
                 </Text>
-              }
-            >
-              {blogPosts && blogPosts.posts && (
-                <>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                    {blogPosts.posts.map((post) => (
-                      <Box
-                        key={post.id}
-                        bg={cardBgColor}
-                        boxShadow={'md'}
-                        rounded={'md'}
-                        p={6}
-                        overflow={'hidden'}
-                        _hover={{
-                          transform: 'translateY(-2px)',
-                          boxShadow: 'lg',
-                        }}
-                        transition="all 0.3s"
-                      >
-                        <Stack>
-                          <Text
-                            color={'orange.500'}
-                            textTransform={'uppercase'}
-                            fontWeight={800}
-                            fontSize={'sm'}
-                            letterSpacing={1.1}
-                          >
-                            {post.category || 'Blog'}
-                          </Text>
-                          <Heading
-                            color={headingColor}
-                            fontSize={'2xl'}
-                            fontFamily={'body'}
-                            noOfLines={2}
-                          >
-                            {post.title}
-                          </Heading>
-                          <Text 
-                            color={grayTextColor}
-                            noOfLines={3}
-                          >
-                            {post.summary}
-                          </Text>
-                        </Stack>
-                        <Flex mt={6} align={'center'}>
-                          <Avatar 
-                            src={profile?.profileImage || 'https://via.placeholder.com/150'} 
-                            size="sm" 
-                            name={post.author}
-                          />
-                          <Stack ml={2} spacing={0}>
-                            <Text fontWeight={600}>{post.author}</Text>
-                            <Text color={grayTextColor} fontSize={'sm'}>
-                              {formatDate(post.created_at)} · {post.read_time}
-                            </Text>
-                          </Stack>
-                        </Flex>
-                      </Box>
-                    ))}
-                  </SimpleGrid>
-                  <Flex justify="center" mt={8}>
-                    <NextLink href="/blog" passHref>
-                      <Button colorScheme="orange" variant="outline">
-                        View All Posts
-                      </Button>
-                    </NextLink>
-                  </Flex>
-                </>
               )}
             </DataLoader>
           </Container>
         </Box>
-      </Box>
-    );
-  }
+
+        {/* Call to Action Section */}
+        <Box py={16} bg={bgColor}>
+          <Container maxW={'3xl'}>
+            <Stack textAlign={'center'} spacing={8}>
+              <Heading fontSize={'4xl'} fontWeight={600}>
+                Let's work together
+              </Heading>
+              <Text color={grayTextColor} fontSize={'lg'}>
+                Ready to start your next project? Get in touch and let's discuss how I can help bring your ideas to life.
+              </Text>
+              <Stack direction={'row'} spacing={3} justify={'center'}>
+                <NextLink href="/contact" passHref>
+                  <Button
+                    colorScheme={'orange'}
+                    bg={'orange.500'}
+                    rounded={'full'}
+                    px={8}
+                    _hover={{
+                      bg: 'orange.600',
+                    }}
+                  >
+                    Get In Touch
+                  </Button>
+                </NextLink>
+                <NextLink href="/cv" passHref>
+                  <Button
+                    variant={'outline'}
+                    colorScheme={'orange'}
+                    rounded={'full'}
+                    px={8}
+                  >
+                    View CV
+                  </Button>
+                </NextLink>
+              </Stack>
+            </Stack>
+          </Container>
+        </Box>
+    </Box>
+  );
+}

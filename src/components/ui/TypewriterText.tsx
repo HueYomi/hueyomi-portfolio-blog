@@ -1,17 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Text, TextProps } from '@chakra-ui/react';
 
-interface TypewriterTextProps extends Omit<TextProps, 'children'> {
+interface TypewriterTextProps extends TextProps {
   texts: string[];
   speed?: number;
   deleteSpeed?: number;
-  pauseDuration?: number;
-  loop?: boolean;
-  showCursor?: boolean;
-  cursorChar?: string;
-  onComplete?: () => void;
+  delay?: number;
 }
 
 /**
@@ -20,102 +16,61 @@ interface TypewriterTextProps extends Omit<TextProps, 'children'> {
  */
 export const TypewriterText: React.FC<TypewriterTextProps> = ({
   texts,
-  speed = 100,
-  deleteSpeed = 50,
-  pauseDuration = 2000,
-  loop = true,
-  showCursor = true,
-  cursorChar = '|',
-  onComplete,
+  speed = 150,
+  deleteSpeed = 100,
+  delay = 2000,
   ...textProps
 }) => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  const typeText = useCallback(() => {
-    const fullText = texts[currentTextIndex];
-    
-    if (!isDeleting) {
-      // Typing forward
-      if (currentText.length < fullText.length) {
-        setCurrentText(fullText.substring(0, currentText.length + 1));
-      } else {
-        // Finished typing, pause before deleting
-        setIsPaused(true);
-        setTimeout(() => {
-          setIsPaused(false);
-          setIsDeleting(true);
-        }, pauseDuration);
+  // Memoize the texts array to prevent unnecessary re-renders
+  const textsString = texts.join(',');
+  const memoizedTexts = useMemo(() => texts, [textsString]);
+
+  useEffect(() => {
+    if (!memoizedTexts || memoizedTexts.length === 0) return;
+
+    const currentFullText = memoizedTexts[currentIndex] || '';
+
+    const timeout = setTimeout(() => {
+      if (isPaused) {
+        setIsPaused(false);
+        setIsDeleting(true);
+        return;
       }
-    } else {
-      // Deleting
-      if (currentText.length > 0) {
-        setCurrentText(fullText.substring(0, currentText.length - 1));
+
+      if (isDeleting) {
+        // Deleting characters
+        if (currentText.length > 0) {
+          setCurrentText(currentFullText.substring(0, currentText.length - 1));
+        } else {
+          // Finished deleting, move to next text
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % memoizedTexts.length);
+        }
       } else {
-        // Finished deleting, move to next text
-        setIsDeleting(false);
-        const nextIndex = (currentTextIndex + 1) % texts.length;
-        setCurrentTextIndex(nextIndex);
-        
-        // If we've completed all texts and not looping, call onComplete
-        if (nextIndex === 0 && !loop) {
-          onComplete?.();
-          return;
+        // Typing characters
+        if (currentText.length < currentFullText.length) {
+          setCurrentText(currentFullText.substring(0, currentText.length + 1));
+        } else {
+          // Finished typing, pause before deleting
+          setIsPaused(true);
         }
       }
-    }
-  }, [
-    texts,
-    currentTextIndex,
-    currentText,
-    isDeleting,
-    pauseDuration,
-    loop,
-    onComplete,
-  ]);
-
-  useEffect(() => {
-    if (texts.length === 0 || isPaused) return;
-
-    const timeout = setTimeout(
-      typeText,
-      isDeleting ? deleteSpeed : speed
-    );
+    }, isPaused ? delay : isDeleting ? deleteSpeed : speed);
 
     return () => clearTimeout(timeout);
-  }, [typeText, isDeleting, speed, deleteSpeed, isPaused]);
-
-  // Reset when texts change
-  useEffect(() => {
-    setCurrentTextIndex(0);
-    setCurrentText('');
-    setIsDeleting(false);
-    setIsPaused(false);
-  }, [texts]);
-
-  if (texts.length === 0) {
-    return null;
-  }
+  }, [currentText, currentIndex, isDeleting, isPaused, memoizedTexts, speed, deleteSpeed, delay]);
 
   return (
     <Text {...textProps}>
       {currentText}
-      {showCursor && (
-        <Text
-          as="span"
-          animation="blink 1s infinite"
-          sx={{
-            '@keyframes blink': {
-              '0%, 50%': { opacity: 1 },
-              '51%, 100%': { opacity: 0 },
-            },
-          }}
-        >
-          {cursorChar}
-        </Text>
-      )}
+      <Text as="span" opacity={0.7} animation="blink 1s infinite">
+        |
+      </Text>
     </Text>
   );
 };

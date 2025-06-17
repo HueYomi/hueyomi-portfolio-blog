@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
   Container,
   Heading,
@@ -100,85 +100,11 @@ import {
   FaRobot
 } from 'react-icons/fa'
 import Head from 'next/head'
-
-interface PersonalInfo {
-  name: string
-  title: string
-  email: string
-  phone: string
-  location: string
-  summary: string
-}
-
-interface WorkExperience {
-  company: string
-  position: string
-  start_date: string
-  end_date: string
-  current: boolean
-  description: string
-  technologies: string[]
-  achievements: string[]
-  responsibilities?: string[]
-}
-
-interface Education {
-  institution: string
-  degree: string
-  start_date: string
-  end_date: string
-  gpa: string
-  honors: string[]
-  relevant_coursework: string[]
-}
-
-interface SkillItem {
-  name: string
-  level: number
-}
-
-interface SkillCategory {
-  category: string
-  items: SkillItem[]
-}
-
-interface Language {
-  language: string
-  level: string
-}
-
-interface KeyAchievement {
-  title: string
-  description: string
-  year: string
-  icon: string
-}
-
-interface Certification {
-  name: string
-  issuer: string
-  date: string
-  credential_id: string
-  status: string
-}
-
-interface CVData {
-  personal_info: PersonalInfo
-  work_experience: WorkExperience[]
-  education: Education[]
-  skills: SkillCategory[]
-  languages: Language[]
-  key_achievements: KeyAchievement[]
-  certifications: Certification[]
-  download_url: string
-  updated_at: string
-}
+import { useCV } from '@/hooks/useData'
+import { CVSkeleton } from '@/components/ui/LoadingSkeleton'
 
 export default function CV() {
-  const [cvData, setCvData] = useState<CVData | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [isClient, setIsClient] = useState(false)
+  const { data: cvData, loading, error } = useCV()
   const toast = useToast()
 
   // Theme colors - Dark mode compatible
@@ -192,25 +118,12 @@ export default function CV() {
   const profileBg = useColorModeValue('orange.400', 'orange.500')
   const profileCardBg = useColorModeValue('rgba(247, 250, 252, 0.95)', 'rgba(45, 55, 72, 0.95)')
 
+  // Update document title when CV data loads
   useEffect(() => {
-    setIsClient(true)
-    const loadCVData = async () => {
-      try {
-        const response = await fetch('/data/cv.json')
-        if (!response.ok) {
-          throw new Error('Failed to load CV data')
-        }
-        const data = await response.json()
-        setCvData(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error occurred')
-      } finally {
-        setLoading(false)
-      }
+    if (cvData?.personal_info) {
+      document.title = `${cvData.personal_info.name} - CV`
     }
-
-    loadCVData()
-  }, [])
+  }, [cvData])
 
   const handleDownloadPDF = () => {
     // Download the PDF file directly
@@ -230,10 +143,8 @@ export default function CV() {
     })
   }
 
-  // Safe date formatting that works consistently on server and client
-  const formatDate = (dateString: string) => {
-    if (dateString === 'Present') return 'Present'
-    if (!isClient) return dateString // Return raw string on server
+  const formatDate = (dateString: string | null) => {
+    if (dateString === 'Present' || dateString === null) return 'Present'
     
     try {
       const date = new Date(dateString)
@@ -245,20 +156,18 @@ export default function CV() {
     }
   }
 
-  // Safe year extraction
-  const getYearFromDate = (dateString: string) => {
-    if (!isClient) return '20XX' // Placeholder on server
+  const getYearFromDate = (dateString: string | null) => {
+    if (dateString === 'Present' || dateString === null) return 'Present'
     
     try {
       return new Date(dateString).getFullYear().toString()
     } catch {
-      return '20XX'
+      return 'Present'
     }
   }
 
-  // Safe last updated formatting
   const getLastUpdated = () => {
-    if (!isClient || !cvData) return 'Recently'
+    if (!cvData) return 'Recently'
     
     try {
       return new Date(cvData.updated_at).toLocaleDateString('en-US', {
@@ -311,22 +220,15 @@ export default function CV() {
     return RiTrophyFill
   }
 
-  if (loading) {
+  if (loading === 'loading' || loading === 'idle') {
     return (
-      <Container maxW="container.lg" py={12}>
-        <Flex justify="center" align="center" minH="400px">
-          <VStack spacing={4}>
-            <Spinner size="xl" color={accentColor} thickness="4px" />
-            <Text color={textColor} fontSize="lg" fontWeight="medium">
-              Loading CV... ✨
-            </Text>
-          </VStack>
-        </Flex>
+      <Container maxW="container.lg" py={8}>
+        <CVSkeleton />
       </Container>
     )
   }
 
-  if (error || !cvData) {
+  if (loading === 'error' || !cvData) {
     return (
       <Container maxW="container.lg" py={12}>
         <Alert status="error" borderRadius="md">

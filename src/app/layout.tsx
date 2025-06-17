@@ -4,6 +4,8 @@ import { Providers } from '@/components/ChakraProvider'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import AnimatedBackground from '@/components/AnimatedBackground'
+import DataPreloader from '@/components/providers/DataPreloader'
+import { NavigationProvider } from '@/components/providers/NavigationProvider'
 import { Box } from '@chakra-ui/react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,14 +24,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <AnimatedBackground />
-          <Box minH="100vh" display="flex" flexDirection="column">
-            <Header />
-            <Box as="main" flex="1" pt="60px">
-              {children}
+          <NavigationProvider>
+            <DataPreloader />
+            <AnimatedBackground />
+            <Box minH="100vh" display="flex" flexDirection="column">
+              <Header />
+              <Box as="main" flex="1" pt="60px">
+                {children}
+              </Box>
+              <Footer />
             </Box>
-            <Footer />
-          </Box>
+          </NavigationProvider>
         </Providers>
       </body>
     </html>
