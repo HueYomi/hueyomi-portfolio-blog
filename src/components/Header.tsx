@@ -37,7 +37,8 @@ import {
   SunIcon,
 } from '@chakra-ui/icons';
 import NextLink from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useNavigationContext } from '@/components/providers/NavigationProvider';
 
 interface NavItem {
   label: string;
@@ -68,12 +69,30 @@ const NAV_ITEMS: Array<NavItem> = [
 export default function Header() {
   const { isOpen, onToggle, onClose } = useDisclosure();
   const router = useRouter();
+  const pathname = usePathname();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { startNavigation } = useNavigationContext();
 
-  const bg = useColorModeValue('white', 'gray.800');
+  const bg = useColorModeValue('rgba(255, 255, 255, 0.95)', 'rgba(26, 32, 44, 0.95)');
   const borderColor = useColorModeValue('orange.200', 'orange.700');
   const textColor = useColorModeValue('orange.600', 'orange.200');
   const brandColor = useColorModeValue('orange.500', 'orange.300');
+  const logoInactiveColor = useColorModeValue('gray.600', 'gray.300');
+  const themeToggleHoverBg = useColorModeValue('orange.50', 'orange.900');
+  const contactButtonActiveBg = useColorModeValue('orange.600', 'orange.400');
+  const contactButtonHoverBg = useColorModeValue('orange.600', 'orange.400');
+
+  // Check if current path is active
+  const isActivePath = (href: string) => {
+    if (href === '/' && pathname === '/') return true;
+    if (href !== '/' && pathname.startsWith(href)) return true;
+    return false;
+  };
+
+  // Handle navigation with loading
+  const handleNavigation = (href: string) => {
+    startNavigation(href);
+  };
 
   return (
     <Box
@@ -114,25 +133,36 @@ export default function Header() {
           
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'center' }}>
             <Flex align="center" gap={10}>
-              <NextLink href="/">
-                <Text
-                  fontFamily={'heading'}
-                  fontSize={{ base: 'xl', md: '2xl' }}
-                  fontWeight="bold"
-                  color={brandColor}
-                  cursor="pointer"
-                  _hover={{
-                    color: useColorModeValue('orange.600', 'orange.400'),
-                  }}
-                  transition="color 0.2s"
-                >
-                  Hue Yomi
-                </Text>
-              </NextLink>
+              <Text
+                fontFamily={'heading'}
+                fontSize={{ base: 'xl', md: '2xl' }}
+                fontWeight="bold"
+                color={isActivePath('/') ? brandColor : logoInactiveColor}
+                cursor="pointer"
+                onClick={() => handleNavigation('/')}
+                _hover={{
+                  color: brandColor,
+                }}
+                transition="color 0.2s"
+                position="relative"
+                _after={isActivePath('/') ? {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-4px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '80%',
+                  height: '2px',
+                  bg: brandColor,
+                  borderRadius: 'full',
+                } : {}}
+              >
+                Hue Yomi
+              </Text>
 
               {/* Desktop Navigation */}
               <Flex display={{ base: 'none', md: 'flex' }}>
-                <DesktopNav />
+                <DesktopNav pathname={pathname} isActivePath={isActivePath} onNavigate={handleNavigation} />
               </Flex>
             </Flex>
           </Flex>
@@ -154,77 +184,108 @@ export default function Header() {
               size="sm"
               color={textColor}
               _hover={{
-                bg: useColorModeValue('orange.50', 'orange.900'),
+                bg: themeToggleHoverBg,
                 color: brandColor,
               }}
             />
             
             <Button
-              as={NextLink}
-              href="/contact"
+              onClick={() => handleNavigation('/contact')}
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
               color={'white'}
-              bg={brandColor}
+              bg={isActivePath('/contact') ? contactButtonActiveBg : brandColor}
               _hover={{
-                bg: useColorModeValue('orange.600', 'orange.400'),
+                bg: contactButtonHoverBg,
               }}
               size="sm"
+              position="relative"
+              _after={isActivePath('/contact') ? {
+                content: '""',
+                position: 'absolute',
+                bottom: '-4px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '80%',
+                height: '2px',
+                bg: 'white',
+                borderRadius: 'full',
+              } : {}}
             >
               Contact
             </Button>
           </Stack>
         </Flex>
-
-        {/* Mobile Navigation */}
-        <Collapse in={isOpen} animateOpacity>
-          <MobileNav onClose={onClose} />
-        </Collapse>
       </Container>
+
+      {/* Mobile Navigation */}
+      <Collapse in={isOpen} animateOpacity>
+        <MobileNav onClose={onClose} pathname={pathname} isActivePath={isActivePath} onNavigate={handleNavigation} />
+      </Collapse>
     </Box>
   );
 }
 
-const DesktopNav = () => {
+interface DesktopNavProps {
+  pathname: string;
+  isActivePath: (href: string) => boolean;
+  onNavigate: (href: string) => void;
+}
+
+const DesktopNav: React.FC<DesktopNavProps> = ({ pathname, isActivePath, onNavigate }) => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('orange.500', 'orange.300');
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const activeLinkColor = useColorModeValue('orange.500', 'orange.300');
+  const popoverBg = useColorModeValue('white', 'gray.800');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={8} align="center">
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <Link
-                as={NextLink}
+              <Text
                 p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
+                fontSize={'md'}
                 fontWeight={500}
-                color={linkColor}
+                color={isActivePath(navItem.href || '#') ? activeLinkColor : linkColor}
+                cursor="pointer"
+                onClick={() => navItem.href && onNavigate(navItem.href)}
                 _hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
                 }}
+                position="relative"
+                _after={isActivePath(navItem.href || '#') ? {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '0px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '80%',
+                  height: '2px',
+                  bg: activeLinkColor,
+                  borderRadius: 'full',
+                } : {}}
+                transition="all 0.2s"
               >
                 {navItem.label}
-              </Link>
+              </Text>
             </PopoverTrigger>
 
             {navItem.children && (
               <PopoverContent
                 border={0}
                 boxShadow={'xl'}
-                bg={popoverContentBgColor}
+                bg={popoverBg}
                 p={4}
                 rounded={'xl'}
                 minW={'sm'}
               >
                 <Stack>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
+                    <DesktopSubNav key={child.label} {...child} onNavigate={onNavigate} />
                   ))}
                 </Stack>
               </PopoverContent>
@@ -236,27 +297,37 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({ label, href, subLabel, onNavigate }: NavItem & { onNavigate: (href: string) => void }) => {
+  const linkColor = useColorModeValue('gray.900', 'gray.200');
+  const linkHoverColor = useColorModeValue('orange.500', 'orange.300');
+  const linkHoverBg = useColorModeValue('orange.50', 'orange.900');
+  const subLabelColor = useColorModeValue('gray.500', 'gray.400');
+
   return (
-    <Link
-      as={NextLink}
-      href={href}
+    <Box
+      onClick={() => href && onNavigate(href)}
       role={'group'}
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('orange.50', 'gray.900') }}
+      cursor="pointer"
+      _hover={{ bg: linkHoverBg }}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
             transition={'all .3s ease'}
-            _groupHover={{ color: 'orange.400' }}
+            _groupHover={{ color: linkHoverColor }}
             fontWeight={500}
+            color={linkColor}
           >
             {label}
           </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
+          {subLabel && (
+            <Text fontSize={'sm'} color={subLabelColor}>
+              {subLabel}
+            </Text>
+          )}
         </Box>
         <Flex
           transition={'all .3s ease'}
@@ -267,65 +338,92 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           align={'center'}
           flex={1}
         >
-          <Icon color={'orange.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={linkHoverColor} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </Link>
+    </Box>
   );
 };
 
-const MobileNav = ({ onClose }: { onClose: () => void }) => {
-  const bg = useColorModeValue('white', 'gray.800');
-  
+interface MobileNavProps {
+  onClose: () => void;
+  pathname: string;
+  isActivePath: (href: string) => boolean;
+  onNavigate: (href: string) => void;
+}
+
+const MobileNav: React.FC<MobileNavProps> = ({ onClose, pathname, isActivePath, onNavigate }) => {
+  const stackBg = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
+
   return (
     <Stack
-      bg={bg}
+      bg={stackBg}
       p={4}
       display={{ md: 'none' }}
       borderTop={1}
       borderStyle={'solid'}
-      borderColor={useColorModeValue('orange.200', 'orange.700')}
+      borderColor={borderColor}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} onClose={onClose} />
+        <MobileNavItem
+          key={navItem.label}
+          {...navItem}
+          onClose={onClose}
+          isActive={isActivePath(navItem.href || '#')}
+          onNavigate={onNavigate}
+        />
       ))}
-      
-      {/* Mobile CTA Buttons */}
-      <VStack spacing={3} pt={4} borderTop={1} borderColor={useColorModeValue('orange.200', 'orange.700')}>
-        <Button
-          as={NextLink}
-          href="/contact"
-          colorScheme="orange"
-          size="sm"
-          w="full"
-          onClick={onClose}
-        >
-          Contact Me
-        </Button>
-      </VStack>
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href, onClose }: NavItem & { onClose: () => void }) => {
+interface MobileNavItemProps extends NavItem {
+  onClose: () => void;
+  isActive: boolean;
+  onNavigate: (href: string) => void;
+}
+
+const MobileNavItem: React.FC<MobileNavItemProps> = ({ 
+  label, 
+  children, 
+  href, 
+  onClose, 
+  isActive,
+  onNavigate 
+}) => {
   const { isOpen, onToggle } = useDisclosure();
+  const textColor = useColorModeValue('gray.600', 'gray.200');
+  const activeTextColor = useColorModeValue('orange.500', 'orange.300');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const hoverBg = useColorModeValue('gray.50', 'gray.700');
+
+  const handleClick = () => {
+    if (href) {
+      onNavigate(href);
+      onClose();
+    } else if (children) {
+      onToggle();
+    }
+  };
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4}>
       <Flex
         py={2}
-        as={NextLink}
-        href={href ?? '#'}
+        onClick={handleClick}
         justify={'space-between'}
         align={'center'}
         _hover={{
-          textDecoration: 'none',
+          bg: hoverBg,
         }}
-        onClick={!children ? onClose : undefined}
+        cursor="pointer"
+        p={2}
+        rounded="md"
       >
         <Text
           fontWeight={600}
-          color={useColorModeValue('orange.600', 'orange.200')}
+          color={isActive ? activeTextColor : textColor}
         >
           {label}
         </Text>
@@ -346,21 +444,27 @@ const MobileNavItem = ({ label, children, href, onClose }: NavItem & { onClose: 
           pl={4}
           borderLeft={1}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('orange.200', 'orange.700')}
+          borderColor={borderColor}
           align={'start'}
         >
-          {children &&
-            children.map((child) => (
-              <Link
-                key={child.label}
-                as={NextLink}
-                py={2}
-                href={child.href}
-                onClick={onClose}
-              >
-                {child.label}
-              </Link>
-            ))}
+          {children?.map((child) => (
+            <Text
+              key={child.label}
+              py={2}
+              cursor="pointer"
+              onClick={() => {
+                if (child.href) {
+                  onNavigate(child.href);
+                  onClose();
+                }
+              }}
+              _hover={{
+                color: activeTextColor,
+              }}
+            >
+              {child.label}
+            </Text>
+          ))}
         </Stack>
       </Collapse>
     </Stack>

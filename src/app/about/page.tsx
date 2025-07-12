@@ -51,6 +51,7 @@ import { MdCheckCircle } from 'react-icons/md'
 import { useProfile } from '@/hooks/useData'
 import { SocialMediaLink } from '@/types'
 import StoryAlbum from '@/components/StoryAlbum'
+import { ProfileSkeleton } from '@/components/ui/LoadingSkeleton'
 import Head from 'next/head'
 
 // Icon mapping for social media
@@ -125,14 +126,7 @@ export default function About() {
   if (loading === 'loading' || loading === 'idle') {
     return (
       <Container maxW="container.lg" py={12}>
-        <Flex justify="center" align="center" minH="400px">
-          <VStack spacing={4}>
-            <Spinner size="xl" color="orange.500" thickness="4px" />
-            <Text color={textColor} fontSize="lg" fontWeight="medium">
-              Loading my story... ✨
-            </Text>
-          </VStack>
-        </Flex>
+        <ProfileSkeleton />
       </Container>
     )
   }

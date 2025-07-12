@@ -165,12 +165,29 @@ export interface Language {
   level: string;
 }
 
+export interface KeyAchievement {
+  title: string;
+  description: string;
+  year: string;
+  icon: string;
+}
+
+export interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+  credential_id: string;
+  status: string;
+}
+
 export interface CV {
   personal_info: PersonalInfo;
   work_experience: WorkExperience[];
   education: Education[];
   skills: SkillCategory[];
   languages: Language[];
+  key_achievements: KeyAchievement[];
+  certifications: Certification[];
   download_url: string;
   updated_at: string;
 }
